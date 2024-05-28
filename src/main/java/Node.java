@@ -4,6 +4,9 @@ public class Node {
     String ip;
     int port;
 
+    /**
+     * (memory)
+     */
     int nodeId;
 
     List<ReducedNode> neighbors;

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="VerteileSystemeLab3Node:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/VerteileSystemeLab3Node_jar</output-path>
+    <root id="archive" name="VerteileSystemeLab3.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/../VerteileSystemeLab3Node/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="VerteileSystemeLab3" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.13.0/jackson-databind-2.13.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.13.0/jackson-core-2.13.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.13.0/jackson-annotations-2.13.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

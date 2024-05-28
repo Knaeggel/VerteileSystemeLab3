@@ -5,11 +5,11 @@ public class InfoLogMessage {
 
     String startIp;
 
-    String startPort;
+    int startPort;
 
     String destinationIp;
 
-    String destinationPort;
+    int destinationPort;
 
     /**
      * Can be info or echo
@@ -24,9 +24,9 @@ public class InfoLogMessage {
 
     public InfoLogMessage(String timestamp,
                           String startIp,
-                          String startPort,
+                          int startPort,
                           String destinationIp,
-                          String destinationPort,
+                          int destinationPort,
                           String messageType,
                           int partialSum) {
         this.timestamp = timestamp;
@@ -36,6 +36,16 @@ public class InfoLogMessage {
         this.destinationPort = destinationPort;
         this.messageType = messageType;
         this.partialSum = partialSum;
+    }
+
+    public void printInfoLogMessage() {
+        String infoLogMessage = timestamp + " from: " + startIp + ":" + startPort + " to: " + destinationIp + ":" + destinationPort + " type: " + messageType;
+
+        if (messageType != null && !messageType.equals("info")) {
+            infoLogMessage += " partialSum: " + partialSum;
+        }
+
+        System.out.println(infoLogMessage);
     }
 
     public String getType() {
@@ -62,11 +72,11 @@ public class InfoLogMessage {
         this.startIp = startIp;
     }
 
-    public String getStartPort() {
+    public int getStartPort() {
         return startPort;
     }
 
-    public void setStartPort(String startPort) {
+    public void setStartPort(int startPort) {
         this.startPort = startPort;
     }
 
@@ -78,11 +88,11 @@ public class InfoLogMessage {
         this.destinationIp = destinationIp;
     }
 
-    public String getDestinationPort() {
+    public int getDestinationPort() {
         return destinationPort;
     }
 
-    public void setDestinationPort(String destinationPort) {
+    public void setDestinationPort(int destinationPort) {
         this.destinationPort = destinationPort;
     }
 
@@ -101,4 +111,6 @@ public class InfoLogMessage {
     public void setPartialSum(int partialSum) {
         this.partialSum = partialSum;
     }
+
 }
+

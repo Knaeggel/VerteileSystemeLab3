@@ -1,9 +1,15 @@
 public class InfoMessage {
     String type = "info";
 
-    public InfoMessage(String type) {
-        this.type = type;
+    String senderIp;
+
+    int senderPort;
+
+    public InfoMessage(String senderIp, int senderPort) {
+        this.senderIp = senderIp;
+        this.senderPort = senderPort;
     }
+
     public InfoMessage() {
 
     }
@@ -14,5 +20,22 @@ public class InfoMessage {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+
+    public String getSenderIp() {
+        return senderIp;
+    }
+
+    public void setSenderIp(String senderIp) {
+        this.senderIp = senderIp;
+    }
+
+    public int getSenderPort() {
+        return senderPort;
+    }
+
+    public void setSenderPort(int senderPort) {
+        this.senderPort = senderPort;
     }
 }

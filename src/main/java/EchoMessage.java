@@ -26,4 +26,9 @@ public class EchoMessage {
     public void setPartialSum(int partialSum) {
         this.partialSum = partialSum;
     }
+
+    @Override
+    public String toString() {
+        return "EchoMessage [type=" + type + ", partialSum=" + partialSum + "]";
+    }
 }

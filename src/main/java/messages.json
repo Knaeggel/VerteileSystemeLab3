@@ -8,7 +8,9 @@
 }
 
 {
-  "type": "info"
+  "type": "info",
+  "senderIp": "127.0.0.1",
+  "senderPort": 50000
 }
 
 {
