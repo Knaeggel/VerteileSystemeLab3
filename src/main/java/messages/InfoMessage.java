@@ -1,3 +1,5 @@
+package messages;
+
 public class InfoMessage {
     String type = "info";
 

@@ -1,3 +1,5 @@
+package messages;
+
 public class InfoLogMessage {
     String type = "infoLog";
 
@@ -22,13 +24,7 @@ public class InfoLogMessage {
     public InfoLogMessage() {
     }
 
-    public InfoLogMessage(String timestamp,
-                          String startIp,
-                          int startPort,
-                          String destinationIp,
-                          int destinationPort,
-                          String messageType,
-                          int partialSum) {
+    public InfoLogMessage(String timestamp, String startIp, int startPort, String destinationIp, int destinationPort, String messageType, int partialSum) {
         this.timestamp = timestamp;
         this.startIp = startIp;
         this.startPort = startPort;
@@ -39,7 +35,7 @@ public class InfoLogMessage {
     }
 
     public void printInfoLogMessage() {
-        String infoLogMessage = timestamp + " from: " + startIp + ":" + startPort + " to: " + destinationIp + ":" + destinationPort + " type: " + messageType;
+        String infoLogMessage = "Time: " + timestamp + " from: " + startIp + ":" + startPort + " to: " + destinationIp + ":" + destinationPort + " type: " + messageType;
 
         if (messageType != null && !messageType.equals("info")) {
             infoLogMessage += " partialSum: " + partialSum;

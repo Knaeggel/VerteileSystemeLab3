@@ -1,3 +1,5 @@
+package messages;
+
 public class EchoMessage {
     String type = "echo";
 
@@ -27,8 +29,4 @@ public class EchoMessage {
         this.partialSum = partialSum;
     }
 
-    @Override
-    public String toString() {
-        return "EchoMessage [type=" + type + ", partialSum=" + partialSum + "]";
-    }
 }

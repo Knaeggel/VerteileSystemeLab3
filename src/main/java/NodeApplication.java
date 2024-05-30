@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import messages.*;
+
 public class NodeApplication {
 
     public static String controllerIp = "127.0.0.1";
@@ -65,8 +67,12 @@ public class NodeApplication {
 
                 socket.receive(receiveDatagramPacket);
 
+                // Add latency
+                Thread.sleep((int) (Math.random() * 100));
+
                 String data = new String(receiveDatagramPacket.getData(), 0, receiveDatagramPacket.getLength());
 
+                // If it is the start message
                 if (data.contains("start")) {
                     System.out.println("start was called on: " + ownIp + ":" + ownPort);
 
@@ -77,6 +83,7 @@ public class NodeApplication {
 
                     String infoData = objectMapper.writeValueAsString(infoMessage);
 
+                    // Send info to all the neighbors
                     sendInfoMessageToNeighborsAndController(socket, neighbors, infoData, ownIp, ownPort, controllerAdress, controllerPort, objectMapper);
 
                 } else if (data.contains("info")) {
@@ -101,12 +108,13 @@ public class NodeApplication {
 
                         String newInfoData = objectMapper.writeValueAsString(ownInfoMessage);
 
+                        // Send info message to all the neighbors but not the parent
                         sendInfoMessageToNeighborsAndController(socket, nodesWithoutParent, newInfoData, ownIp, ownPort, controllerAdress, controllerPort, objectMapper);
                     }
 
                     if (neighborsInformed == neighbors.size()) {
 
-                        // Send echo
+                        // Send the initial echo
                         EchoMessage echoMessage = new EchoMessage(ownSum);
 
                         String echoData = objectMapper.writeValueAsString(echoMessage);
@@ -121,13 +129,16 @@ public class NodeApplication {
 
                     EchoMessage echoMessage = objectMapper.readValue(data, EchoMessage.class);
 
+                    // Add echo sum to own sum
                     ownSum += echoMessage.getPartialSum();
 
-                    echoMessage = new EchoMessage(ownSum);
+                    echoMessage.setPartialSum(ownSum);
 
                     String echoData = objectMapper.writeValueAsString(echoMessage);
 
                     if (neighborsInformed == neighbors.size()) {
+
+                        // If the initiator recieved echos from all its children
                         if (initiator) {
 
                             ResultMessage resultMessage = new ResultMessage(ownSum);
@@ -138,11 +149,11 @@ public class NodeApplication {
 
                             System.out.println("Echo terminated");
 
-                            Thread.sleep((int) Math.random() * 100);
                             socket.send(resultDatagramPacket);
 
                         } else {
 
+                            // Send echo to parent
                             sendEchoMessageToParentAndController(socket, parentNode, echoData, ownIp, ownPort, controllerAdress, controllerPort, objectMapper, ownSum);
                         }
                     }
@@ -157,7 +168,19 @@ public class NodeApplication {
 
     }
 
-
+    /**
+     * Sends an info message to all the given neighbors
+     * @param socket The socket of the node
+     * @param neighbors The list of neighbors to send to
+     * @param data The data to send
+     * @param ownIp
+     * @param ownPort
+     * @param controllerAdress
+     * @param controllerPort
+     * @param objectMapper
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static void sendInfoMessageToNeighborsAndController(DatagramSocket socket, List<ReducedNode> neighbors, String data, String ownIp, int ownPort, InetAddress controllerAdress, int controllerPort, ObjectMapper objectMapper) throws IOException, InterruptedException {
 
         // For each neighbor
@@ -175,9 +198,6 @@ public class NodeApplication {
             // Create info packet
             DatagramPacket infoPacket = new DatagramPacket(data.getBytes(), data.length(), neighborAddress, neighborPort);
 
-            // Add latency
-            Thread.sleep((int) (Math.random() * 100));
-
             // Send info packet
             socket.send(infoPacket);
 
@@ -194,7 +214,21 @@ public class NodeApplication {
         }
     }
 
-    public static void sendEchoMessageToParentAndController(DatagramSocket socket, ReducedNode parent, String data, String ownIp, int ownPort, InetAddress controllerAdress, int controllerPort, ObjectMapper objectMapper, int partialSum) throws IOException, InterruptedException {
+    /**
+     * Sends the echo message to the parent and the controller
+     * @param socket The socket of the node
+     * @param parent The parent node
+     * @param data The recieved echo message data
+     * @param ownIp
+     * @param ownPort
+     * @param controllerAddress
+     * @param controllerPort
+     * @param objectMapper
+     * @param partialSum The current partial sum
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public static void sendEchoMessageToParentAndController(DatagramSocket socket, ReducedNode parent, String data, String ownIp, int ownPort, InetAddress controllerAddress, int controllerPort, ObjectMapper objectMapper, int partialSum) throws IOException, InterruptedException {
 
         // Get ip
         String parentIp = parent.getIp();
@@ -208,9 +242,6 @@ public class NodeApplication {
         // Create info packet
         DatagramPacket infoPacket = new DatagramPacket(data.getBytes(), data.length(), neighborAddress, parentPort);
 
-        // Add latency
-        Thread.sleep((int) (Math.random() * 100));
-
         // Send info packet
         socket.send(infoPacket);
 
@@ -221,16 +252,21 @@ public class NodeApplication {
         byte[] infoLogMessageAsByte = objectMapper.writeValueAsBytes(infoLogMessage);
 
         // create controller datagram packet
-        DatagramPacket controllerDatagramPacket = new DatagramPacket(infoLogMessageAsByte, infoLogMessageAsByte.length, controllerAdress, controllerPort);
+        DatagramPacket controllerDatagramPacket = new DatagramPacket(infoLogMessageAsByte, infoLogMessageAsByte.length, controllerAddress, controllerPort);
 
         socket.send(controllerDatagramPacket);
 
     }
 
-    public static List<ReducedNode> extractIpAndPort(String input) {
+    /**
+     * Extracts the ips and ports from the given String argument
+     * @param stringArgument The string argument
+     * @return List of parsed nodes from the argument
+     */
+    public static List<ReducedNode> extractIpAndPort(String stringArgument) {
         List<ReducedNode> nodes = new ArrayList<>();
 
-        String[] ipAndPorts = input.split(";");
+        String[] ipAndPorts = stringArgument.split(";");
 
         for (String ipAndPort : ipAndPorts) {
             String[] ipAndPortParts = ipAndPort.split(":");

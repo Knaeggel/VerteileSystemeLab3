@@ -9,7 +9,7 @@ public class ReducedNode {
         this.port = port;
     }
 
-    public ReducedNode(){
+    public ReducedNode() {
 
     }
 
@@ -31,14 +31,6 @@ public class ReducedNode {
 
     @Override
     public boolean equals(Object obj) {
-        return ip.equals(((ReducedNode)obj).ip) && port == ((ReducedNode)obj).port;
-    }
-
-    @Override
-    public String toString() {
-        return "ReducedNode{" +
-                "ip='" + ip +
-                ", port=" + port +
-                '}';
+        return ip.equals(((ReducedNode) obj).ip) && port == ((ReducedNode) obj).port;
     }
 }

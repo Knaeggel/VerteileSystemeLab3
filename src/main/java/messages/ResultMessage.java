@@ -1,3 +1,5 @@
+package messages;
+
 public class ResultMessage {
     String type = "result";
     int sum;
