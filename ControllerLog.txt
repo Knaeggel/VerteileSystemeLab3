@@ -1,0 +1,53 @@
+C:\Users\nickl\IdeaProjects\VerteileSystemeLab3>java -jar VerteileSystemeLab3Deployer.jar
+Available initiators: 127.0.0.1:50001 127.0.0.1:50002 127.0.0.1:50003 127.0.0.1:50004 127.0.0.1:50005 127.0.0.1:50006 127.0.0.1:50007 127.0.0.1:50008 127.0.0.1:50009 127.0.0.1:50010
+Total nodes: 10
+Total edges: 21
+Ip and port of initiator: (IP-Address:Port)
+127.0.0.1:50004
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50004 to: 127.0.0.1:50001 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50004 to: 127.0.0.1:50003 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50004 to: 127.0.0.1:50005 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50003 to: 127.0.0.1:50001 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50003 to: 127.0.0.1:50002 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50003 to: 127.0.0.1:50007 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50005 to: 127.0.0.1:50001 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50005 to: 127.0.0.1:50006 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50005 to: 127.0.0.1:50007 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50002 to: 127.0.0.1:50001 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50002 to: 127.0.0.1:50006 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50002 to: 127.0.0.1:50007 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50002 to: 127.0.0.1:50008 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50002 to: 127.0.0.1:50010 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50001 to: 127.0.0.1:50002 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50001 to: 127.0.0.1:50003 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50001 to: 127.0.0.1:50005 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50007 to: 127.0.0.1:50002 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50007 to: 127.0.0.1:50005 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50007 to: 127.0.0.1:50006 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50007 to: 127.0.0.1:50008 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50007 to: 127.0.0.1:50009 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50007 to: 127.0.0.1:50010 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50006 to: 127.0.0.1:50002 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50006 to: 127.0.0.1:50007 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50006 to: 127.0.0.1:50008 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50008 to: 127.0.0.1:50006 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50008 to: 127.0.0.1:50007 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50008 to: 127.0.0.1:50009 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50010 to: 127.0.0.1:50007 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50010 to: 127.0.0.1:50009 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50009 to: 127.0.0.1:50008 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50009 to: 127.0.0.1:50010 type: info
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50010 to: 127.0.0.1:50002 type: echo partialSum: 10
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50001 to: 127.0.0.1:50004 type: echo partialSum: 1
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50006 to: 127.0.0.1:50005 type: echo partialSum: 6
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50008 to: 127.0.0.1:50002 type: echo partialSum: 8
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50009 to: 127.0.0.1:50007 type: echo partialSum: 9
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50002 to: 127.0.0.1:50003 type: echo partialSum: 20
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50005 to: 127.0.0.1:50004 type: echo partialSum: 11
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50007 to: 127.0.0.1:50003 type: echo partialSum: 16
+Time: Thu May 30 10:38:43 CEST 2024 from: 127.0.0.1:50003 to: 127.0.0.1:50004 type: echo partialSum: 39
+Total sum: 55
+Total info messages: 42
+Total echo messages: 9
+Stopped controller
+Destroying node processes
