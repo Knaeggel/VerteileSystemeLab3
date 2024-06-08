@@ -104,10 +104,9 @@ public class Controller {
             } else if (data.contains("infoLog")) {
                 InfoLogMessage infoLogMessage = objectMapper.readValue(data, InfoLogMessage.class);
 
-                if (data.contains("info")) {
+                if (infoLogMessage.getPartialSum() == 0) {
                     infoMessageCount++;
-                }
-                if (data.contains("echo")) {
+                } else {
                     echoMessageCount++;
                 }
 
