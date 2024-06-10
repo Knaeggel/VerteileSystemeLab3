@@ -20,6 +20,11 @@ public class NodeApplication {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
+        for (String arg : args) {
+
+            System.out.println(arg);
+        }
+
         if (args.length < 4) {
             System.err.println("Insufficient arguments. Required: <initialIp> <initialPort> <initialNeighbors> <initialMemory>");
             System.exit(1);

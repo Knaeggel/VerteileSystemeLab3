@@ -61,7 +61,6 @@ public class Deployer {
             // nodeProcesses = startNodes(nodes);
 
             // Start remote processes
-            System.out.println("Starting remote");
             startRemoteProcesses(nodes);
 
             // Start the controller
@@ -161,10 +160,10 @@ public class Deployer {
 
             int initialMemory = node.getNodeId();
 
-            String nodeLocation = "/home/student/lab3/Node.jar";
+            String nodeLocation = "/home/student/lab3/startnode";
 
-            String sshCommand = "ssh student@" + nodeIp + " java -jar " + nodeLocation + " " + nodeIp +
-                    " " + String.valueOf(nodePort) + " " + neighborsArgs + " " + String.valueOf(initialMemory) + " &";
+            String sshCommand = "ssh student@" + nodeIp + " '" + nodeLocation + " " + nodeIp +
+                    " " + String.valueOf(nodePort) + " " + neighborsArgs + " " + String.valueOf(initialMemory) + " &'";
 
 
             Process process = Runtime.getRuntime().exec(new String[]{"bash", "-c", sshCommand});
@@ -184,7 +183,7 @@ public class Deployer {
 
         for (ReducedNode neighbor : neighbors) {
 
-            ipsAndPortsArgs.append(neighbor.getIp() + ":" + neighbor.getPort() + ";");
+            ipsAndPortsArgs.append(neighbor.getIp() + ":" + neighbor.getPort() + "\\;");
         }
 
         return ipsAndPortsArgs.toString();
