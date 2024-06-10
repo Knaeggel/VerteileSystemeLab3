@@ -12,7 +12,7 @@ import messages.*;
 
 public class NodeApplication {
 
-    public static String controllerIp = "127.0.0.1";
+    public static String controllerIp = "192.168.3.2";
     public static int controllerPort = 50000;
 
     // args should look like this localhost 50001 localhost:50002;localhost:50003 1

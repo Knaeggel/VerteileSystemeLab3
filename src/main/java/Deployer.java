@@ -2,6 +2,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.net.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Deployer {
 
-    public static final String controllerIp = "127.0.0.1";
+    public static final String controllerIp = "192.168.3.2";
     public static final int controllerPort = 50000;
 
     public static final String currentDir = System.getProperty("user.dir");
@@ -57,7 +58,11 @@ public class Deployer {
             DatagramSocket controllerSocket = new DatagramSocket(controllerPort);
 
             // Start all the nodes
-            nodeProcesses = startNodes(nodes);
+            // nodeProcesses = startNodes(nodes);
+
+            // Start remote processes
+            System.out.println("Starting remote");
+            startRemoteProcesses(nodes);
 
             // Start the controller
             new Controller().startController(nodes, controllerSocket, nodeNetwork);
@@ -139,6 +144,33 @@ public class Deployer {
         }
 
         return processes;
+    }
+
+    public void startRemoteProcesses(List<Node> nodes) throws IOException {
+
+
+        for (Node node : nodes) {
+
+            String nodeIp = node.getIp();
+
+            int nodePort = node.getPort();
+
+            List<ReducedNode> neighbors = node.getNeighbors();
+
+            String neighborsArgs = parseIpAndPortsToStringArg(neighbors);
+
+            int initialMemory = node.getNodeId();
+
+            String nodeLocation = "/home/student/lab3/Node.jar";
+
+            String sshCommand = "ssh student@" + nodeIp + " java -jar " + nodeLocation + " " + nodeIp +
+                    " " + String.valueOf(nodePort) + " " + neighborsArgs + " " + String.valueOf(initialMemory) + " &";
+
+
+            Process process = Runtime.getRuntime().exec(new String[]{"bash", "-c", sshCommand});
+
+
+        }
     }
 
     /**
