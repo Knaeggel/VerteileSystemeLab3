@@ -33,7 +33,7 @@ public class Deployer {
             // Path to my network
             Path path = Paths.get(currentDir + File.separator + "mynet.json");
 
-            // Create bufferd reader
+            // Create buffered reader
             BufferedReader reader = Files.newBufferedReader(path);
 
             // Build mynet.json as string
