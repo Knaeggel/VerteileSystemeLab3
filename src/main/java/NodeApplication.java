@@ -31,7 +31,6 @@ public class NodeApplication {
 
         List<ReducedNode> initialNeighbors = extractIpAndPort(args[2]);
 
-
         int initialMemory = Integer.parseInt(args[3]);
 
         Node node = new Node(initialIp, initialPort, initialMemory, initialNeighbors);
