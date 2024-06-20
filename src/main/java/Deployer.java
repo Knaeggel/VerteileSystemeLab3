@@ -145,8 +145,12 @@ public class Deployer {
         return processes;
     }
 
+    /**
+     * Starts n remote processes, needs the startnode script
+     * @param nodes
+     * @throws IOException
+     */
     public void startRemoteProcesses(List<Node> nodes) throws IOException {
-
 
         for (Node node : nodes) {
 
@@ -165,10 +169,7 @@ public class Deployer {
             String sshCommand = "ssh student@" + nodeIp + " '" + nodeLocation + " " + nodeIp +
                     " " + String.valueOf(nodePort) + " " + neighborsArgs + " " + String.valueOf(initialMemory) + " &'";
 
-
             Process process = Runtime.getRuntime().exec(new String[]{"bash", "-c", sshCommand});
-
-
         }
     }
 
